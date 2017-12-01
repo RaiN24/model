@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>StoryTelling123</title>
+</head>
+
+
+<body>
+
+
+
+
+    <link rel="stylesheet" href="css/layout.css" charset="utf-8"></link>
+    <link href="perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="css/buttons.css" rel="stylesheet">
+
+
+    <script src="perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="perfect-scrollbar/js/perfect-scrollbar.js"></script>
+
+
+
+
+    <script src="jslib/jquery.min.js"></script>
+    <script src="jslib/d3.js"></script>
+    <script src="jslib/underscore-min.js"></script>
+    <script src="jslib/bootstrap.min.js"></script>
+    <script src="jslib/buttons.js"></script>
+
+    <link rel="stylesheet" href="search_div/css/jquery-labelauty.css">
+    <script src="search_div/laydate/laydate.js"></script>
+    <script src="js/jquery-latest.min.js"></script>
+
+    <script src="js/angular.min.js" charset="utf-8"></script>
+    <script src="js/selection.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/relation.js"></script>
+    <script src="data/relation_data.js"></script>
+
+    <script src=js/d3.v3.min.reason.js></script>
+    <link href='css/reason_style.css' rel='stylesheet' type='text/css'>
+    <script src="data/T_reason_out.js"></script>
+    <script src="data/C_reason_out.js"></script>
+    <script src="data/news_title.js"></script>
+    <script src=js/reason.js></script>
+
+    <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <div id="top-div">
+        <div id="naive" class="block-div">
+
+            <span class="button-dropdown button-dropdown-primary" data-buttons="dropdown">
+            <a href="#" class="button button-primary button-tiny" id = "reason-select" value = "Trump-Up">Trump-Up <i class="fa fa-caret-down"></i></a>
+ 
+                <ul class="button-dropdown-list is-below">
+                    <li><a href="#" onclick="reason_select_fun(0)">Trump-Up</a></li>
+                    <li><a href="#" onclick="reason_select_fun(1)">Trump-Down</a></li>
+                    <li><a href="#" onclick="reason_select_fun(2)">Clinton-Up</a></li>
+                    <li><a href="#" onclick="reason_select_fun(3)">Clinton-Down</a></li>
+                </ul>
+            </span>
+
+            <span class="button-dropdown button-dropdown-primary" data-buttons="dropdown">
+            <a href="#" class="button button-primary button-tiny" id = "noun-select" value = "noun">Noun words<i class="fa fa-caret-down"></i></a>
+ 
+                <ul class="button-dropdown-list is-below">
+                    <li><a href="#" onclick="is_noun_fun(0)">All words</a></li>
+                    <li><a href="#" onclick="is_noun_fun(1)">Noun words</a></li>
+                </ul>
+            </span>
+
+            <span class="button-dropdown button-dropdown-primary" data-buttons="dropdown">
+            <a href="#" class="button button-primary button-tiny">Delete Words <i class="fa fa-caret-down"></i></a>
+ 
+                <ul class="button-dropdown-list is-below" id = "delete-words" value = "希拉里 克林顿 唐纳德 特朗普">
+                    <li id = "希拉里"><a href="#" onclick="delete_click.call(this)">希拉里</a></li>
+                    <li id = "克林顿"><a href="#" onclick="delete_click.call(this)">克林顿</a></li>
+                    <li id = "唐纳德"><a href="#" onclick="delete_click.call(this)">唐纳德</a></li>
+                    <li id = "特朗普"><a href="#" onclick="delete_click.call(this)">特朗普</a></li>
+                </ul>
+            </span>
+            <!--
+            <input type="text" id="rangechanging"></input>
+            <button class="button button-box button-tiny" id="timeline_play" onclick="rangeChanged(0)"><i class="fa fa-play"></i>&nbsp;&nbsp;更改单位时间跨度</button>
+            -->
+        </div>
+
+
+        <div id="timeline_bottom" class="block-div" selectD=0 selectI=0>
+
+
+            <div id="timeline_line">
+
+                <div id="lower_line"></div>
+                <div id="upper_line"></div>
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+    <div id="bottom-div">
+
+        <div id="bottom-left-div">
+
+            <div id="content" class="block-div"></div>
+
+            <div id="div_5" class="block-div"></div>
+
+
+
+        </div>
+
+        <div id="bottom-right-div">
+            <div id="relation" class="block-div"></div>
+
+            <div id="reason" class="block-div"></div>
+
+        </div>
+
+
+    </div>
+
+    <div id="tooltip">
+        <div id="tooltip-Container">
+            <div class="tooltip-band"></div>
+            <div class="tooltip-rule"></div>
+            <div id="tooltip-year"></div>
+            <div id="tooltip-title"></div>
+            <div id="tooltip-place"></div>
+            <div class="tooltip-tail"></div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="search_div/js/jquery-1.8.3.min.js"></script>
+    <script src="search_div/js/jquery-labelauty.js"></script>
+
+    <script src="d3.layout.cloud.js"></script>
+    <script src="data/json_by_news_all.js"></script>
+    <script src="data/json_by_news_noun.js"></script>
+    <script src="data/json_by_words.js"></script>
+
+    <!-- Google fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:100,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+
+
+
+
+    <!-- jQuery -->
+
+
+
+
+
+    <link rel="stylesheet" href="css/tooltip.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="js/initialize.js"></script>
+
+    <script src="js/wordleDraw.js"></script>
+
+
+
+
+
+    <script src="js/timeline.js"></script>
+    <script src="js/showTooltip.js"></script>
+    <script src="js/new_timelineDraw.js"></script>
+
+
+
+    <script>
+        var rects = [];
+        var texts = [];
+        var candidate = [];
+        var csvData = [];
+        var jsonData;
+        var flag = [];
+        var circles = [];
+        var scaler = 0;
+        var range = 7;
+        var tmpData = [];
+        var axisDraw;
+        var jsonWord = [];
+        var keyWords;
+        var wordleText;
+
+        var drawColor = []; // decide which rectangular to be highlighted
+        var rectSelected = [];
+        var rectSelectedFlag = 0;
+        var wordleSelected = -1;
+        var textToHighlight = [];
+
+        var globalContent = [];
+
+        circles.push([]);
+        circles.push([]);
+
+        var fill = d3.scaleOrdinal(d3.schemeCategory20);
+
+        var container = document.querySelector('#content');
+        Ps.initialize(container);
+
+
+
+
+
+        $("#s").val("2015-07-01");
+        $("#e").val("2015-09-16");
+
+
+
+        var svg_4 = d3.select("#div_5").append("svg")
+            .attr("width", $(window).width() * 0.27)
+            .attr("height", $(window).height() * 0.385);
+
+        var svg_5 = d3.select("#content").append("svg")
+            .attr("width", $(window).width() * 0.17)
+            .attr("height", $(window).height() * 0.385);
+
+        var svg_6 = d3.select("#relation").append("svg")
+            .attr("width", $(window).width() * 0.17)
+            .attr("height", $(window).height() * 0.385);
+
+        d4.select("#reason").append("div")
+            .attr("id", "segment0")
+            .attr("class", "distquantdiv")
+            .attr("width", $(window).width() * 0.25)
+            .attr("height", $(window).height() * 0.385);
+
+        d4.select("#segment0").append("svg")
+            .attr("width", $(window).width() * 0.13)
+            .attr("height", $(window).height() * 0.38);
+
+        //drawReason();
+
+    </script>
+
+
+
+</body>
